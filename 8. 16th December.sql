@@ -105,5 +105,3 @@ select * from country;
 select GovernmentForm, count(name) from country where capital > 30 
 group by GovernmentForm HAVING sum(population) > 300000;
 
-
-
