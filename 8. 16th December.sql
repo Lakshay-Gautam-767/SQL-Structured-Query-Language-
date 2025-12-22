@@ -77,10 +77,20 @@ group by continent; # Read Note 👇
 -- on LifeExpectancy. We only use having to filter aggregate column.
 -- LifeExpectancy is already present so we use where, here.  
 
-
+-- =====================================================================
 # Question-1: You need to find out the government form, total country 
 -- for each government form where the total number of country should 
 -- be greater than 30
+-- -------------------------------------------------------------------
+/* Trick to solve these question.
+You can't decide that whether we have to use WHERE or HAVING just by 
+reading the question. 
+1. First see the data of your table.
+2. Then think on which column you should apply GROUP BY. 
+3. Then exhaust your brain on the question's language.
+*/
+-- -------------------------------------------------------------------
+
 select GovernmentForm, count(name) from country group by GovernmentForm 
 having count(name) > 30.00;
 # Or You Can Also Do Like This, Both are Same. 
@@ -92,5 +102,8 @@ group by GovernmentForm having totalcountry > 30.00;
 -- greater than 30 and total population greater than 3 lakh. 
 
 select * from country;
+select GovernmentForm, count(name) from country where capital > 30 
+group by GovernmentForm HAVING sum(population) > 300000;
+
 
 
