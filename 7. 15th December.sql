@@ -78,7 +78,7 @@ select continent, count(name) from country where continent = 'Asia';
 select continent, count(name) from country where continent = 'Africa'; # Now for Africa
 select continent, count(name) from country where continent = 'Europe'; # Now for Europe
 
-# Very Length Task 😡😰
+# Very Lengthy Task 😡😰
 # Better option is to use the "group by"
 select continent, count(*) from country group by continent;
  
