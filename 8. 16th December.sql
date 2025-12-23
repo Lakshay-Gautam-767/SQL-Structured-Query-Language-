@@ -11,8 +11,7 @@ select * from country;
 
 select region, avg(population) from country group by region;
 -- ---------------------------------------------------------------------------------------------
--- =============================================================================================
-## Make notes before 12:11 of 16th August. 
+-- ============================================================================================= 
 /* 
 Find out how many city are there in each district from the 
 city table */
