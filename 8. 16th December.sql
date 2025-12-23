@@ -10,9 +10,8 @@ group by region;
 select * from country;
 
 select region, avg(population) from country group by region;
-
-# Incomplete Above
--- -----------------------------------------
+-- ---------------------------------------------------------------------------------------------
+-- =============================================================================================
 ## Make notes before 12:11 of 16th August. 
 /* 
 Find out how many city are there in each district from the 
@@ -105,3 +104,18 @@ select * from country;
 select GovernmentForm, count(name) from country where capital > 30 
 group by GovernmentForm HAVING sum(population) > 300000;
 
+-- ===================================================================
+use world;
+select * from country;
+
+# If we want to calculate total no of country in each continent [Easy Task 😎]
+select continent, count(name) from country group by continent;
+
+
+# But if we want to calculate how many country are there in each region of each
+-- continent (like Asia)
+select continent, region, count(name) as 'Total Country' from country group by continent, region;
+
+# Now find out In each continent, how many country get independent in each year
+select * from country;
+select continent, IndepYear, count(IndepYear) from country group by continent, IndepYear;
