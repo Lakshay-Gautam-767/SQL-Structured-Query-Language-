@@ -183,9 +183,22 @@ is a minimal set of one or more attributes(columns) that uniquely identifies
 each rows/record in a table.
 --> A minimal Super Key with no redundant attributes.
 --> It is a "Subset" of Super Keys. We look for the smallest combinations that 
-    still work alone.
+    still work alone.    
+ 
+ Key Characteristics:
+ * Minimality: No duplicacy of column.
+ * Multiple Possiblities: A table can have several candidate keys (Employee_ID, 
+   SSN, Email, etc).  
+ * Selection: One candidate is choosen as a primary key. 
+   which is [smaller in size (like: ID), can uniquely identify each row,
+   should not have Null Value to become Primary Key]. 
+ * Null Values: Can sometimes contain null values, though primary key cannot.  
 
-
-
-
+-- ==========================================================================
+Learning Assigment
+	1) Primary Key
+    2) Foreign Key
+    3) Super Key
+    4) Candidate Key
+    5) Types of Relationship
 
