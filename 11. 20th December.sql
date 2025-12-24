@@ -1,3 +1,4 @@
+# 20th December
 # Test: Group by Test 
 
 /*
@@ -42,7 +43,7 @@ select city, count(*) from employees group by city having count(emp_id)>2;
 select city, avg(salary) from employees group by city having avg(salary) 
 between 60000 and 75000; 
 
-# 10.Find the department and city combination where the average salary is highest.
+# 10. Find the department and city combination where the average salary is highest.
 select department, city, avg(salary) from employees group by department, city 
 having avg(salary) = max(salary);
 
