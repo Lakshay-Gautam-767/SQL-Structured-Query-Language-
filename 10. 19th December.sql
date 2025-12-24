@@ -26,7 +26,8 @@ Let's assume this situation
 +----------+-------+-----+--------+------------------+
 
 Now in this table focus on this part.
--- Situation 1: This part is fine, but look at situation 2  
+-- Situation 1: This part is fine, because it does not have duplicacy 
+   but look at situation 2  
 104 ----> D
 104 ----> A 
 
@@ -36,8 +37,8 @@ NOTE: It get's worst when we also store address, etc. Then
 20 ---> Aman ----> aman32@gmail.com
 20 ---> Aman ----> aman32@gmail.com
 
-# When there is duplicacy of data then it creates bottleneck of
- database. 
+# When there is duplicacy of data then it creates bottleneck on
+  our database. 
  
 # Now Problems: Storage Cost, Processing Cost, takes more time to 
   get result. 
@@ -49,7 +50,7 @@ like this
 +----------+-------+        +------+--------+------------------+
 | order-id | order |        | cid  | cname  | Email Id         |
 +----------+-------+        +------+--------+------------------+
-|      101 |   A   |        |   10 | Jai    | jai123@gmail.com | 
+|      101 |   A   |        |   10 | Jai    | jai123@gmail.com |
 |      102 |   B   |        |   20 | Aman   | aman32@gmail.com |
 |      103 |   C   |        |   30 | Yash   | yash364@zoho.com |
 |      104 |   D   |        |   40 | Tushar | tushar@gmail.com |
@@ -58,7 +59,28 @@ like this
 |      105 |   B   |    
 |      105 |   E   |    
 +----------+-------+  
-
 We have reduced the redundancy and duplicacy of our table. 
 
+# Now if we want to find out which are the products that a particular 
+  customer have purchased? 
+  Then we need a common element or relationship between these table, So
+  that we can connect these two tables but there is no relationship 
+  between these table. 
+  So we have to add the column so that we can make relationship b/w tables. 
+  Like this.
+  
++----------+-------+-----+        +------+--------+------------------+
+| order-id | order | cid |        | cid  | cname  | Email Id         |
++----------+-------+-----+        +------+--------+------------------+
+|      101 |   A   |  10 | ------>|   10 | Jai    | jai123@gmail.com |
+|      102 |   B   |  30 |      ⇗ |   20 | Aman   | aman32@gmail.com |
+|      103 |   C   |  40 |     /  |   30 | Yash   | yash364@zoho.com |
+|      104 |   D   |  10 |----/   |   40 | Tushar | tushar@gmail.com |
+|      104 |   A   |  20 |        +------+--------+------------------+
+|      105 |   A   |  30 |
+|      105 |   B   |  30 |
+|      105 |   E   |  30 |
++----------+-------+-----+  
 */
+
+
