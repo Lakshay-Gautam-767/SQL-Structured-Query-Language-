@@ -1,5 +1,4 @@
 # 18th December
-
 /******************************************************************************
  * DATA MODELING AND RELATIONSHIPS:                                           *
  ******************************************************************************/
@@ -109,7 +108,7 @@ SELECT cy.id, cy.name, cy.countrycode, cnt.code,
 cnt.name, cnt.continent FROM city AS cy
 JOIN country AS cnt 
 where cy.countrycode = cnt.code;    # (where) This is old way
-					# BOTH ARE SAME
+-- <============= BOTH ARE SAME===============>
 SELECT cy.id, cy.name, cy.countrycode, cnt.code, 
 cnt.name, cnt.continent FROM country AS cnt
 JOIN city AS cy
