@@ -39,11 +39,65 @@ select emp_id, emp_name, round(salary, -3) from employees;
 select city, count(*) from employees group by city having count(emp_id)>2;
 
 #  9. Find cities where the average salary is between 60,000 and 75,000.
-select city, avg(salary) from employees group by city having avg(salary) between 60000 and 75000; 
+select city, avg(salary) from employees group by city having avg(salary) 
+between 60000 and 75000; 
 
 # 10.Find the department and city combination where the average salary is highest.
-select * from employees;
-
+select department, city, avg(salary) from employees group by department, city 
+having avg(salary) = max(salary);
 
 # 11. Display departments where more than one city is present.
-# 12.Write a brief on SQL and type of sql languages 
+select department, count(distinct city) from employees group by department 
+having count(distinct(city)) > 1;    # Note here: count(distinct(city))
+	# Note: Here distinct is important 
+
+# 12. Write a brief on SQL and type of sql languages 
+# Answer: 
+/*
+   SQL (Structured Query Language) BRIEF
+   ------------------------------------
+   SQL is the standard language used to communicate with relational databases. 
+   It is used to store, retrieve, manage, and manipulate data.
+
+-- 1. DDL (Data Definition Language): Defines the database structure.
+-- Commands: CREATE, ALTER, DROP, TRUNCATE.
+
+-- 2. DML (Data Manipulation Language): Manages the data within tables.
+-- Commands: INSERT, UPDATE, DELETE.
+
+-- 3. DQL (Data Query Language): Used to fetch or retrieve data.
+-- Commands: SELECT.
+
+-- 4. DCL (Data Control Language): Controls access and permissions.
+-- Commands: GRANT, REVOKE.
+
+-- 5. TCL (Transaction Control Language): Manages database transactions.
+-- Commands: COMMIT, ROLLBACK, SAVEPOINT.
+*/
+
+
+# Now an Important Note 📝: 
+# To practice these questions interactively in MySQL Workbench, please 
+-- run the following queries first.
+
+/* 
+create database test;
+use test;
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY,
+    emp_name VARCHAR(50),
+    department VARCHAR(50),
+    salary DECIMAL(10, 2),
+    join_date DATE,
+    city VARCHAR(50)
+);
+INSERT INTO employees (emp_id, emp_name, department, salary, join_date, city) VALUES
+(101, 'Alice', 'HR', 50000, '2021-01-15', 'New York'),
+(102, 'Bob', 'IT', 70000, '2020-03-10', 'London'),
+(103, 'Charlie', 'IT', 65000, '2019-07-23', 'London'),
+(104, 'Diana', 'HR', 52000, '2021-06-01', 'New York'),
+(105, 'Edward', 'Finance', 80000, '2018-11-12', 'Sydney'),
+(106, 'Fiona', 'Finance', 75000, '2020-02-20', 'Sydney'),
+(107, 'George', 'IT', 72000, '2022-04-18', 'New York');
+*/
+# Now you can try to solve these questions in an interactive way. 
