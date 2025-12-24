@@ -109,9 +109,7 @@ SELECT cy.id, cy.name, cy.countrycode, cnt.code,
 cnt.name, cnt.continent FROM city AS cy
 JOIN country AS cnt 
 where cy.countrycode = cnt.code;    # (where) This is old way
-
-# BOTH ARE SAME
-
+					# BOTH ARE SAME
 SELECT cy.id, cy.name, cy.countrycode, cnt.code, 
 cnt.name, cnt.continent FROM country AS cnt
 JOIN city AS cy
@@ -122,4 +120,9 @@ ON cy.countrycode = cnt.code;       # (on) This is a modern and standard way.
 -- with the governmentForm for each city.
 select cy.name, cy.population, cnt.name, cnt.governmentform from city as cy
 join country as cnt on cy.countrycode = cnt.code;
+
+# Question: Get the country name, country's population and the language spoken 
+-- with the percentage of each language.  
+select cnt.name, cnt.population, cl.language, cl.percentage from country as cnt
+join countrylanguage as cl where cnt.code = cl.countrycode;
 -- *************************** END OF NOTES ***************************
