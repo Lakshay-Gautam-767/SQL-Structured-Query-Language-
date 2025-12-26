@@ -4,7 +4,8 @@ Learn ORDER BY from here:
 https://www.w3schools.com/sql/sql_orderby.asp
 
 
-2. Never write alias in sinqle/inverted quote('').
+2. IN JOINT CONCEPTS
+i) Never write alias in sinqle/inverted quote('').
 * Column Aliases vs Table Aliases
 => Aap shayad Column ke naam badalne ke liye quotes use karte honge, jo ki allowed hai:
 	✅ SELECT player AS 'Player Name' ... (Ye chal jayega kyunki ye output heading hai).
@@ -12,3 +13,5 @@ https://www.w3schools.com/sql/sql_orderby.asp
 	❌ Lekin FROM goal AS 'gl' nahi chalega, kyunki SQL isse ek "string" samajh leta hai table nahi.
 	Instead write like this => 
 		✅ SELECT FROM goal AS gl
+
+ii) Always Focus what you are joining like 'ON eteam.id = goal.teamid', don't do mistakes.
