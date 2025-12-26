@@ -8,4 +8,7 @@ https://www.w3schools.com/sql/sql_orderby.asp
 * Column Aliases vs Table Aliases
 => Aap shayad Column ke naam badalne ke liye quotes use karte honge, jo ki allowed hai:
 	✅ SELECT player AS 'Player Name' ... (Ye chal jayega kyunki ye output heading hai).
+
 	❌ Lekin FROM goal AS 'gl' nahi chalega, kyunki SQL isse ek "string" samajh leta hai table nahi.
+	Instead write like this => 
+		✅ SELECT FROM goal AS gl
