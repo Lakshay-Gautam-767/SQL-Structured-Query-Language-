@@ -59,6 +59,15 @@ The Inner Join selects records that have matching values in both tables.
 	How it works: If a customer exists in the Customers table but has never 
 	placed an order, they will not appear in the results.
     
+    ( A )   ( B )
+   .----.  .----.
+  /      \/      \
+ |   A   ##   B   |
+  \      /\      /
+   '----'  '----'
+          ↑ 
+     Inner Join (Only Common)
+    
 #	Syntax Options */
 # i) Old Syntax: Uses the WHERE clause to match IDs.
 SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
@@ -84,8 +93,57 @@ first), and the matched records from the right table.
 	Behavior: If there is no match, the result is NULL on the right side.
 	Use Case: When you want to see a list of all customers, including those 
               who haven't bought anything.
+
+   ( A )   ( B )
+   .----.  .----.
+  /######\/      \
+ |### A ###   B   |
+  \######/\      /
+   '----'  '----'
+          ↑ 
+	  Left Join (Left Part + Common)
 */
 SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
 o.amount FROM customers AS c LEFT JOIN orders AS o
 ON c.customer_id = o.customer_id;
+
+/*
+C. Right (Outer) Join
+The Right Join returns all records from the right table, and the matched records 
+from the left table.
+
+	Behavior: If an order exists that isn't linked to a valid customer in your 
+    list, the customer details will show as NULL.
+
+    ( A )   ( B )
+   .----.  .----.
+  /      \/######\
+ |    A  #### B ##|
+  \      /\######/
+   '----'  '----'
+          ↑ 
+	 Right Join (Right Part + Common)
+
+*/
+SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
+o.amount FROM customers AS c RIGHT JOIN orders AS o
+ON c.customer_id = o.customer_id; 
+
+/*
+D. Full Outer Join
+This join returns all records when there is a match in either left or right table 
+records.
+
+	Result: It combines the effect of both Left and Right joins. It shows customers 
+    without orders AND orders without registered customers.
+
+    ( A )   ( B )
+   .----.  .----.
+  /######\/######\
+ |### A ##### B ##|
+  \######/\######/
+   '----'  '----'
+          ↑ 
+   Full Outer Join (Left Part + Right Part + Common)
+*/
 
