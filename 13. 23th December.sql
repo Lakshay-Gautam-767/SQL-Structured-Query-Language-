@@ -161,8 +161,8 @@ SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
 o.amount FROM customers AS c NATURAL JOIN orders AS o; 
 
 /*
-Cross Join (Cartesian Product): 
-A Cross Join returns the Cartesian product of the two tables.
+ii) Cross Join (Cartesian Product): A Cross Join returns the Cartesian product of 
+									the two tables.
 	Mechanism: Every row from the first table is paired with every row from the 
 			   second table.
     Calculation: If Table A has m rows and Table B has n rows, the result set will 
