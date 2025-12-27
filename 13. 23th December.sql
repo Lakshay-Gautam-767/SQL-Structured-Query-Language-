@@ -74,7 +74,7 @@ SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
 o.amount FROM customers AS c JOIN orders AS o
 WHERE c.customer_id = o.customer_id;
 
-# ii) Modern Syntax: Uses the INNER JOIN keyword with the ON clause.
+# ii) Modern Syntax (Recommended): Uses the INNER JOIN keyword with the ON clause.
 SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
 o.amount FROM customers AS c INNER JOIN orders AS o
 ON c.customer_id = o.customer_id;
