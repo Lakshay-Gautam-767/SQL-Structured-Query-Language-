@@ -180,7 +180,7 @@ select * from orders;
 
 SELECT c.customer_id, c.customer_name, sum(o.amount) from customers as c 
 inner join orders as o ON o.customer_id = c.customer_id 
-group by customer_id, c.customer_name;
+group by c.customer_id, c.customer_name;
 -- ===========================================================================
 /* 
 # Learning Assigment
