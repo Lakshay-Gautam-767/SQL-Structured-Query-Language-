@@ -86,6 +86,6 @@ first), and the matched records from the right table.
               who haven't bought anything.
 */
 SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
-o.amount FROM customers AS c INNER JOIN orders AS o
+o.amount FROM customers AS c LEFT JOIN orders AS o
 ON c.customer_id = o.customer_id;
 
