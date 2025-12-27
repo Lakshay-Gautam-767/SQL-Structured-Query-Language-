@@ -49,10 +49,43 @@ show tables;
 select * from customers;
 select * from orders;
 
-select c.customer_id, c.customer_name, o.customer_id, o.order_id,
-o.amount from customers as c join orders as o
-where c.customer_id = o.customer_id;
+/*
+# 2. Types of SQL Joins
 
-select c.customer_id, c.customer_name, o.customer_id, o.order_id,
-o.amount from customers as c inner join orders as o
+-- ==========================================================================
+A. Inner Join
+The Inner Join selects records that have matching values in both tables.
+
+	How it works: If a customer exists in the Customers table but has never 
+	placed an order, they will not appear in the results.
+    
+#	Syntax Options */
+# i) Old Syntax: Uses the WHERE clause to match IDs.
+SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
+o.amount FROM customers AS c JOIN orders AS o
+WHERE c.customer_id = o.customer_id;
+
+# ii) Modern Syntax: Uses the INNER JOIN keyword with the ON clause.
+SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
+o.amount FROM customers AS c INNER JOIN orders AS o
 ON c.customer_id = o.customer_id;
+
+# iii) Using Keyword: Used when column names are identical in both tables 
+--  (e.g., USING(customer_id)).
+SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
+o.amount FROM customers AS c INNER JOIN orders AS o
+USING (customer_id);
+-- ==========================================================================
+/*
+B. Left (Outer) Join
+The Left Join returns all records from the left table (the table mentioned 
+first), and the matched records from the right table.
+
+	Behavior: If there is no match, the result is NULL on the right side.
+	Use Case: When you want to see a list of all customers, including those 
+              who haven't bought anything.
+*/
+SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
+o.amount FROM customers AS c INNER JOIN orders AS o
+ON c.customer_id = o.customer_id;
+
