@@ -147,3 +147,43 @@ records.
    Full Outer Join (Left Part + Right Part + Common)
 */
 
+
+/*
+Advanced Join Categories
+i) Natural Join: A Natural Join creates a join based on all columns in the two tables 
+				 that have the same name.
+
+   Constraint: You do not need to specify the ON condition.
+   Risk: If the column names don't match (e.g., customer_id vs cid), it fails to 
+		 join correctly and may act as a Cross Join.
+*/
+SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
+o.amount FROM customers AS c NATURAL JOIN orders AS o; 
+
+/*
+Cross Join (Cartesian Product): 
+A Cross Join returns the Cartesian product of the two tables.
+	Mechanism: Every row from the first table is paired with every row from the 
+			   second table.
+    Calculation: If Table A has m rows and Table B has n rows, the result set will 
+				 have m times n rows.
+    Note: This is rarely used in real-world scenarios unless you need every possible 
+		  combination of data.
+*/
+SELECT c.customer_id, c.customer_name, o.customer_id, o.order_id,
+o.amount FROM customers AS c cross JOIN orders AS o;
+
+
+# Question: Find out the total amount spend for each order, spended by a customer
+select * from customers;
+select * from orders;
+
+SELECT c.customer_id, c.customer_name, sum(o.amount) from customers as c 
+inner join orders as o ON o.customer_id = c.customer_id 
+group by customer_id, c.customer_name;
+-- ===========================================================================
+/* 
+# Learning Assigment
+Question-1: What is Normalization in SQL? [1NF, 2NF(Partial Dependency), 3NF]
+		-- Pre-Requisite to understand this. (Super Key, Candidate Key)
+Question-2: What are Self Join? and Why we use it? 
