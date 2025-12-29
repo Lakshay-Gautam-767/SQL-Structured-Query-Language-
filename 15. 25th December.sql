@@ -85,3 +85,8 @@ select st.student_id, st.student_name, en.enrollment_id,
 en.course_name from students as st
 right join enrollments as en ON st.student_id = en.student_id;
 
+# Question-4: Find all student names who do not have any enrollments. 
+select st.student_id, st.student_name, en.enrollment_id, 
+en.course_name from students as st 
+left JOIN enrollments as en ON st.student_id = en.student_id
+where en.enrollment_id is NULL;
