@@ -64,6 +64,24 @@ INSERT INTO enrollments (enrollment_id, student_id, course_name, credits) VALUES
 */
 
 show tables;
-select * from enrollments;
 select * from students;
+select * from enrollments;
+
+# Question-1: Find the students who enrolled in courses
+# Hint: Concept of Inner Join
+select st.student_id, st.student_name, en.enrollment_id, 
+en.course_name from students as st 
+JOIN enrollments as en ON st.student_id = en.student_id;
+
+# Question-2: Find the students even with no Enrollments.
+# Hint: Concept of Left Join
+select st.student_id, st.student_name, en.enrollment_id,
+en.course_name from students as st
+left join enrollments as en ON st.student_id = en.student_id;
+
+# Questions-3: Find All Enrollments even if student is missing. 
+# Hint: Concept of Right Join
+select st.student_id, st.student_name, en.enrollment_id,
+en.course_name from students as st
+right join enrollments as en ON st.student_id = en.student_id;
 
