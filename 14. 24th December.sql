@@ -103,9 +103,18 @@ show tables;
 
 select * from employee; 
 
-SELECT Emp.emp_id, Emp.emp_name, Emp.manager_id, Mng.emp_id, Mng.emp_name from 
-Employee as Emp
-join Employee as Mng ON Emp.manager_id = Mng.emp_id; 
+SELECT Emp.emp_id, Emp.emp_name, Emp.manager_id, Emp.salary, Mng.emp_id, 
+Mng.emp_name, Mng.salary from Employee as Emp
+join Employee as Mng ON Emp.manager_id = Mng.emp_id;
 
+# Question: You need to find out, How many employees are there for each 
+		 -- manager.
+select * from employee;
+select Mng.emp_id, Mng.emp_name as 'Manager Name', count(Emp.emp_id)
+from Employee as Emp join Employee as Mng ON Emp.manager_id = Mng.emp_id
+group by Mng.emp_id, Mng.emp_name;
+-- ==========================================================================
 
-
+# Homework/Learning Assigment
+# Solve questions on this website for practice
+#	 https://sqlzoo.net/wiki/The_JOIN_operation
