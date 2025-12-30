@@ -135,3 +135,15 @@ skip specific rows.
 	* LIMIT n: Returns only the first n rows.
 	* OFFSET n: Skips the first n rows.
 */
+
+# Example: Finding the 2nd Highest Enrollment To find the 
+-- student with the second-highest number of courses:
+# Solution: Procedure
+#	1) Order by count in Descending order.
+#	2) Set LIMIT 1 (we want one result).
+#	3) Set OFFSET 1 (skip the 1st/highest result).
+
+select st.student_id, st.student_name, count(en.enrollment_id) 
+from students as st join enrollments as en
+ON st.student_id = en.student_id group by st.student_id
+order by count(en.enrollment_id) desc limit 1 offset 1; 
