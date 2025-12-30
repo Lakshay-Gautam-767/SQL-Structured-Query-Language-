@@ -105,4 +105,25 @@ select st.student_id, st.student_name, sum(en.credits) from students as st
 left join enrollments as en ON st.student_id = en.student_id 
 group by st.student_id, st.student_name;
 
+# Question-7: Write a sql query to find the students who have enrolled 
+-- in more than 2 courses
+select st.student_id, st.student_name, count(en.enrollment_id) 
+from students as st join enrollments as en ON st.student_id = en.student_id
+group by student_id, st.student_name having count(en.enrollment_id) > 2; 
+
+# Question-8: Find out the total number of student in each major
+select major, count(student_id) from students group by major;
+
+# Question-9: Write a sql query to calculate total credits earned by 
+-- students in each major. 
+select st.major, sum(en.credits) from students as st
+join enrollments as en on st.student_id = en.student_id 
+group by st.major, st.student_name;
  
+# Question-10: Write a sql query to find the student who enrolled in
+-- highest number of courses.  
+select st.student_id, st.student_name, count(en.enrollment_id) 
+from students as st join enrollments as en
+ON st.student_id = en.student_id group by st.student_id
+order by count(en.enrollment_id) desc limit 1; 
+
