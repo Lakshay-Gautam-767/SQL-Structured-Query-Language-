@@ -127,3 +127,11 @@ from students as st join enrollments as en
 ON st.student_id = en.student_id group by st.student_id
 order by count(en.enrollment_id) desc limit 1; 
 
+/* -- NEW CONCEPT 
+
+Limit and Offset (Finding N-th Highest)
+These keywords are used to restrict the number of rows returned and 
+skip specific rows.
+	* LIMIT n: Returns only the first n rows.
+	* OFFSET n: Skips the first n rows.
+*/
