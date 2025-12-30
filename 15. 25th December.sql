@@ -89,4 +89,20 @@ right join enrollments as en ON st.student_id = en.student_id;
 select st.student_id, st.student_name, en.enrollment_id, 
 en.course_name from students as st 
 left JOIN enrollments as en ON st.student_id = en.student_id
-where en.enrollment_id is NULL;
+where en.enrollment_id is NULL; -- we cannot use, = 'NULL' (wrong)❌
+
+# Question-5: Write a sql query to find out the total number of courses
+-- each student is enrolled in.  
+select st.student_id, st.student_name, count(en.enrollment_id) 
+from students as st 
+join enrollments as en ON st.student_id = en.student_id group by 
+st.student_id, st.student_name;
+
+# Question-6: Write a sql query to calculate the total credits earned 
+-- by each student including the student who have not enrolled in 
+-- any courses. 
+select st.student_id, st.student_name, sum(en.credits) from students as st
+left join enrollments as en ON st.student_id = en.student_id 
+group by st.student_id, st.student_name;
+
+ 
