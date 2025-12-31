@@ -110,6 +110,10 @@ group by st.student_id, st.student_name;
 select st.student_id, st.student_name, count(en.enrollment_id) 
 from students as st join enrollments as en ON st.student_id = en.student_id
 group by student_id, st.student_name having count(en.enrollment_id) > 2; 
+-- ============================================================================
+# MORE DIFFICULT QUESTIONS
+# [We cannot solve these questions by just reading the questions, 
+#  We have to deeply understand the question, that what question want from us]
 
 # Question-8: Find out the total number of student in each major
 select major, count(student_id) from students group by major;
@@ -120,6 +124,23 @@ select st.major, sum(en.credits) from students as st
 join enrollments as en on st.student_id = en.student_id 
 group by st.major, st.student_name;
  
+
+# --============================================================================ 
+/* -- NEW CONCEPT 
+A) ORDER BY (Sorting Data): The ORDER BY clause is used to sort our 
+result set in a specific order.
+	1) ASC (Ascending): Sorts from lowest to highest. (default setting)
+	2) DESC (Descending): Sorts from highest to lowest 
+ SYNTAX: 
+   ORDER BY column_name ASC
+   
+B) Limit and Offset (Finding N-th Highest)
+These keywords are used to restrict the number of rows returned and 
+skip specific rows.
+	* LIMIT n: Returns only the first n rows.
+	* OFFSET n: Skips the first n rows.
+*/
+
 # Question-10: Write a sql query to find the student who enrolled in
 -- highest number of courses.  
 select st.student_id, st.student_name, count(en.enrollment_id) 
@@ -127,16 +148,8 @@ from students as st join enrollments as en
 ON st.student_id = en.student_id group by st.student_id
 order by count(en.enrollment_id) desc limit 1; 
 
-/* -- NEW CONCEPT 
 
-Limit and Offset (Finding N-th Highest)
-These keywords are used to restrict the number of rows returned and 
-skip specific rows.
-	* LIMIT n: Returns only the first n rows.
-	* OFFSET n: Skips the first n rows.
-*/
-
-# Example: Finding the 2nd Highest Enrollment To find the 
+# Another Question: Finding the 2nd Highest Enrollment To find the 
 -- student with the second-highest number of courses:
 # Solution: Procedure
 #	1) Order by count in Descending order.
@@ -147,3 +160,31 @@ select st.student_id, st.student_name, count(en.enrollment_id)
 from students as st join enrollments as en
 ON st.student_id = en.student_id group by st.student_id
 order by count(en.enrollment_id) desc limit 1 offset 1; 
+# --============================================================================
+# Question-11: Write a sql query to display the student name in 
+-- uppercase along with the number of courses enrolled.
+select upper(st.student_name), count(en.enrollment_id) from students as st
+join enrollments as en ON st.student_id = en.student_id 
+group by st.student_id, st.student_name;
+
+# Question-12: Write a SQL query to display the first 3 characters of
+-- each course name and the total number of enrollments for those courses.
+select substr(en.course_name, 1, 3), count(en.enrollment_id) 
+from students as st join enrollments as en 
+on st.student_id = en.student_id
+group by course_name;
+
+# Question-13: Write a SQL query to group the students by the length of
+-- their names and show the count of students in each group.
+select char_length(st.student_name), count(en.enrollment_id) 
+from students as st join enrollments as en ON st.student_id=en.student_id
+group by char_length(st.student_name);
+-- ==========================================================================
+# 1) Solve questions from 1 to 12 from this website ✅
+# https://sqlzoo.net/wiki/The_JOIN_operation
+
+# 2) Solve questions on LeetCode
+--   175 ✅, 181 ✅
+
+# Homework: Solve these questions in these sequence 👇
+-- 183 ✅, 184, 197, 511, 180
