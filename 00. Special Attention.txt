@@ -15,3 +15,46 @@ i) Never write alias in sinqle/inverted quote('').
 		✅ SELECT FROM goal AS gl
 
 ii) Always Focus what you are joining like 'ON eteam.id = goal.teamid', don't do mistakes.
+
+3) Order by
+i) (Priority by sorting): If both value(name) are same, then sort by second priority.
+   Syntax: 
+	   ORDER BY SUBSTR(Name, -3, -3) ASC, ID ASC;
+    # If 2 or more column_name(Name) have same value(last 3 characters) in their column_name(Name) 
+    then SORT BY the Second Priority/Column Name(ID).
+       	  Example:		
+		ORDER by name ASC, ID DESC;
+    NOTE: We do not have to write "order by" two times. 
+	  Just write like this 👇
+		order by name ASC, ID DESC; 
+
+
+4) Tricky Questions:
+-- =============================================================================================
+Question -1
+"rounded down to the nearest integer" 🤔
+
+Now What will you do? Will you use round(number, -1) OR You will use floor(number)❓
+	floor(number) ✅
+	round(number, -1) ❌
+--> BECAUSE 
+* ROUND: Ye dekhta hai ki number kiske zyada paas hai. Agar 0.5 ya usse zyada hai, toh upar le 
+         jayega (1.6 ----> 2).
+* FLOOR (Round Down): Ye "floor" yaani zameen ki taraf dekhta hai. Ye sirf decimal ko kat deta hai 
+                      aur niche wale integer par le aata hai (1.6 ------> 1).
+* CEIL (Round Up): Ye "ceiling" yaani chhat ki taraf dekhta hai (1.1 ------> 2).
+
+Aapne -1 kyun try kiya?
+Aapne shayad socha hoga ki ROUND(number, -1) se pichhla digit zero ho jayega. Lekin SQL mein -1 ka 
+matlab hota hai nearest 10th (e.g., 14 -------> 10, 16 ------> 20). Isliye aapka result match nahi 
+kar raha tha.
+
+Tip for HACKERANK
+"Nearest Integer": ROUND(value)
+"Rounded Down" / "Lower Integer": FLOOR(value)
+"Rounded Up" / "Higher Integer": CEILING(value)
+---------------------------------------------------------------------------------------------
+Question -2
+a + b !> c ❌
+a + b <= c ✅
+==============================================================================================
