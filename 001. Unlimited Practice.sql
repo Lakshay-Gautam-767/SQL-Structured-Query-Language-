@@ -55,4 +55,19 @@ select name, continent, region from country where name like '%a_a%';
 -- country from the country table.
 select * from country where name in ('Albania', 'Netherlands');
 
+# Question-12: Find only those country whose country name's first character 
+-- should be equal to continent's first character
+select name, continent from country where substr(name, 1, 1) = substr(continent, 1, 1);
+
+# Question-13: Find only those country whose country name's starting 
+-- 3 characters should be 'alg' 
+select * from country where name like 'alg%';
+select * from country where substr(name, 1, 3) = 'alg';
+
+# Question-14: Find the unique goverment in 'Asia' 
+select count(distinct(GovernmentForm)) from country where continent like 'Asia';
+
+# Question-15 Find the total population only which is available 
+-- in 'Africa' Continent
+select continent, sum(population) from country where continent = 'Africa';
 
